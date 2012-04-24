@@ -18,7 +18,7 @@ public class PixelConverter {
              return Math.abs(red - (color >> 16) & 0xFF) + Math.abs(green - (color>> 8) & 0xFF) + Math.abs(blue - (color & 0xFF));
     }
 
-    public static int getTranslatedColor(int red,int blue,int green)
+    public static String getTranslatedColor(int red,int blue,int green)
     {
          int topScore=Integer.MAX_VALUE;
          int score;
@@ -32,7 +32,7 @@ public class PixelConverter {
               }
           }
 
-         return 30 + colorIndex;
+         return namedColorList[colorIndex];
     }
 
 
