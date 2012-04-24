@@ -1,5 +1,17 @@
+import quicktime.QTSession;
+import quicktime.qd.QDGraphics;
+import quicktime.qd.QDRect;
+import quicktime.std.sg.SGDeviceList;
+import quicktime.std.sg.SGDeviceName;
+import quicktime.std.sg.SGVideoChannel;
+import quicktime.std.sg.SequenceGrabber;
+import quicktime.util.RawEncodedImage;
+
+
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,17 +23,22 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class Driver {
-    public static void main(String args[]) {
-        BufferedImage img = null;
 
-        try {
-            img = ImageIO.read(new File("/Users/pbakkum/Desktop/Lenna.png"));
-        }
-        catch (IOException e) {
-            System.out.println(e.toString());
-        }
+    public static void main(String args[]) throws Exception {
+        ColoredImage d = new ColoredImage();
 
-        System.out.println("width " + img.getWidth());
-        System.out.println(img.getRGB(10, 100));
+        //d.printImage("/Users/pbakkum/Desktop/Lenna.png");
+
+        VideoCapture vc = new VideoCapture(512, 512);
+
+        while(true) {
+            BufferedImage img = (BufferedImage) vc.getNextImage();
+            d.printImage(img);
+            Thread.sleep(100);
+        }
     }
+
+
+
+
 }
