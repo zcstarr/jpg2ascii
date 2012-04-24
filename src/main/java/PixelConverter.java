@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class PixelConverter {
 
-    public static int colorsList[]={0,12727841,2472996,11382055,4796129,13842643,3390408,13356237};//8487811,16529695,3270434,15395875,5780479,16332280,1372400,15330283};
+    public static int colorsList[]={0,12727841,2472996,11382055,4796129,13842643,3390408,13356237,8487811,16529695,3270434,15395875,5780479,16332280,1372400,15330283,16777215};
+    public static String namedColorList[]={"0;30","0;34","0;32","0;36","0;31","0;35","0;37","1;30","1;34","1;32","1;36","1;36","1;31","1;31","1:35","1;33","1;37"};
 
 
     private static int getColorScore(int color,int red,int blue,int green)
@@ -30,6 +31,7 @@ public class PixelConverter {
                    topScore=score;
               }
           }
+
          return 30 + colorIndex;
     }
 
