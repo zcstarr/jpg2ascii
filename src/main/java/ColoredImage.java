@@ -41,26 +41,30 @@ public class ColoredImage {
         printImage(img);
     }
 
-    public void printImage(BufferedImage img) {
+    public String printImage(BufferedImage img) {
         Pixel[][] sample = sampler(img);
-        render(sample);
+        return render(sample);
     }
 
-    private void render(Pixel[][] sample) {
+    private String render(Pixel[][] sample) {
+
+        StringBuilder s = new StringBuilder();
         for(int row = 0; row < sample[0].length; row++) {
-            String s = "";
 
             for(int col = 0; col < sample.length; col++) {
-                s += "\033[" + sample[col][row].color + "m" + sample[col][row].ch + "\033[0m";
+                s.append("\033[" + sample[col][row].color + "m" + sample[col][row].ch + "\033[0m");
             }
 
-            System.out.println(s);
+            s.append("\n");
+
         }
+        System.out.println(s);
+        return s.toString();
     }
 
     private Pixel[][] sampler(BufferedImage img) {
-        int xsamplesize = 5;
-        int ysamplesize = 10;
+        int xsamplesize = 3;
+        int ysamplesize = 6;
         int width = img.getWidth();
         int height = img.getHeight();
 
